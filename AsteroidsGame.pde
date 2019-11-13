@@ -39,8 +39,14 @@ public void keyPressed(){
       ship.turn(20);
   }
   
-  //spaceship enters hyperspace
+  //spaceship deccelerates
   if(key == 's' || key == 'S'){
+      ship.accelerate(-1);
+  }
+  
+  //spaceship enters hyperspace
+  //spaceship decelerates
+  if(key == 'h' || key == 'H'){
       ship.hyperspace();
   }
 }

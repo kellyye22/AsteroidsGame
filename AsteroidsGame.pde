@@ -45,6 +45,25 @@ public void draw()
  for(int i = 0; i < bullets.size(); i++){
    bullets.get(i).show();
    bullets.get(i).move();
+   
+   double asteroidX, asteroidY, bulletX, bulletY;
+   
+   
+   for(int x = 0; x < asteroids.size(); x++){
+     
+     asteroidX = asteroids.get(x).myCenterX;
+     asteroidY = asteroids.get(x).myCenterY;
+     
+     bulletX = bullets.get(i).myCenterX;
+     bulletY = bullets.get(i).myCenterY;
+   
+     if(dist((float)asteroidX,(float)asteroidY,(float)bulletX, (float)bulletY) <= 20){
+        asteroids.remove(x);
+        asteroids.add(new Asteroid());
+        break;
+        }
+   }
+   
  }
  
   ship.show();

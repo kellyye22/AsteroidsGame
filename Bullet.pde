@@ -12,7 +12,7 @@ class Bullet extends Floater{
    myDirectionX = theShip.getDirectionX();
    myDirectionY = theShip.getDirectionY();
    
-   accelerate(2);
+   accelerate(4);
    
    //myDirectionX = 2 * Math.cos(dRadians) + theShip.myDirectionX;
    //myDirectionY = 2 * Math.cos(dRadians) + theShip.myDirectionY;

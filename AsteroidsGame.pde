@@ -1,7 +1,8 @@
-//your variable declarations here
 Spaceship ship = new Spaceship();
 Star [] space = new Star[500];
 ArrayList <Asteroid> asteroids = new ArrayList <Asteroid>();
+ArrayList<Bullet> bullets = new ArrayList<Bullet>();
+//Bullet test = new Bullet(ship);
 
 public void setup() 
 {
@@ -23,25 +24,34 @@ public void draw()
   for(int x = 0; x < asteroids.size(); x++){
     asteroids.get(x).show();
     asteroids.get(x).move();
+  
+    double spaceshipX = ship.myCenterX;
+    double spaceshipY = ship.myCenterY;
     
-  double spaceshipX = ship.myCenterX;
-  double spaceshipY = ship.myCenterY;
+    double asteroidX = asteroids.get(x).myCenterX;
+    double asteroidY = asteroids.get(x).myCenterY;
   
-  double asteroidX = asteroids.get(x).myCenterX;
-  double asteroidY = asteroids.get(x).myCenterY;
-  
-  if(dist((float)asteroidX,(float)asteroidY, (float)spaceshipX, (float)spaceshipY) <= 20){
-    asteroids.remove(x);
-    }
+    if(dist((float)asteroidX,(float)asteroidY,(float)spaceshipX, (float)spaceshipY) <= 20){
+      asteroids.remove(x);
+      }
 
   }
+  
   for(int i = 0; i < space.length; i++){
     space[i].show();
   }
   
+        
+ for(int i = 0; i < bullets.size(); i++){
+   bullets.get(i).show();
+   bullets.get(i).move();
+ }
+ 
   ship.show();
   ship.move();
-      
+
+ 
+ 
 }
 
 public void keyPressed(){
@@ -67,8 +77,12 @@ public void keyPressed(){
   }
   
   //spaceship enters hyperspace
-  //spaceship decelerates
   if(key == 'h' || key == 'H'){
       ship.hyperspace();
+  }
+  
+  //bullet launched
+  if(key == ' '){
+    bullets.add(new Bullet(ship));
   }
 }
